@@ -340,6 +340,7 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'ale') >= 0
 	Plug 'w0rp/ale'
+	Plug 'Valloric/YouCompleteMe',{'for': ['python', 'lua', 'c']}
 
 	" 设定延迟和提示信息
 	let g:ale_completion_delay = 500
