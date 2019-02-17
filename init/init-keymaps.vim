@@ -25,16 +25,14 @@ inoremap <C-h> <left>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <right>
+inoremap <C-b> <left>
+inoremap <C-d> <del>
 cnoremap <C-h> <left>
 cnoremap <C-j> <down>
 cnoremap <C-k> <up>
 cnoremap <C-l> <right>
-cnoremap <C-a> <home>
-cnoremap <C-e> <end>
-cnoremap <C-f> <C-d>
 cnoremap <C-b> <left>
 cnoremap <C-d> <del>
-cnoremap <C-_> <C-k>
 
 
 "----------------------------------------------------------------------

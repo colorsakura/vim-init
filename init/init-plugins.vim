@@ -91,9 +91,6 @@ augroup END
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'basic') >= 0
 
-	" 展示开始画面，显示最近编辑过的文件
-	Plug 'mhinz/vim-startify'
-
 	" 一次性安装一大堆 colorscheme
 	Plug 'flazz/vim-colorschemes'
 
@@ -121,10 +118,6 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
-
-	" 默认不显示 startify
-	let g:startify_disable_at_vimenter = 1
-	let g:startify_session_dir = '~/.vim/session'
 
 	" 使用 <space>ha 清除 errormarker 标注的错误
 	noremap <silent><space>ha :RemoveErrorMarkers<cr>
@@ -155,9 +148,6 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" 快速文件搜索
 	Plug 'junegunn/fzf'
 
-	" 给不同语言提供字典补全，插入模式下 c-x c-k 触发
-	Plug 'asins/vim-dict'
-
 	" 使用 :FlyGrep 命令进行实时 grep
 	Plug 'wsdjeg/FlyGrep.vim'
 
@@ -165,7 +155,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'dyng/ctrlsf.vim'
 
 	" 配对括号和引号自动补全
-	Plug 'Raimondi/delimitMate'
+	Plug 'Raimondi/delimitMate',{'for': ['python', 'lua', 'c', 'go']}
 
 	" 提供 gist 接口
 	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
@@ -184,7 +174,7 @@ endif
 if index(g:bundle_group, 'tags') >= 0
 
 	" 提供 ctags/gtags 后台数据库自动更新功能
-	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'ludovicchabant/vim-gutentags',{'for': ['python', 'lua', 'c', 'go']}
 
 	" 提供 GscopeFind 命令并自动处理好 gtags 数据库切换
 	" 支持光标移动到符号名上：<leader>cg 查看定义，<leader>cs 查看引用
@@ -256,9 +246,6 @@ endif
 " 文件类型扩展
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'filetypes') >= 0
-
-	" powershell 脚本文件的语法高亮
-	Plug 'pprovost/vim-ps1', { 'for': 'ps1' }
 
 	" lua 语法高亮增强
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
@@ -339,7 +326,8 @@ endif
 " ale：动态语法检查
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'ale') >= 0
-	Plug 'w0rp/ale'
+	Plug 'w0rp/ale',{'for': ['python', 'lua', 'c', 'go']}
+	Plug 'Valloric/YouCompleteMe',{'for': ['python', 'lua', 'c', 'go']}
 
 	" 设定延迟和提示信息
 	let g:ale_completion_delay = 500
