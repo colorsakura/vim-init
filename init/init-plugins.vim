@@ -17,6 +17,7 @@ if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
 	let g:bundle_group += ['leaderf']
+	let g:bundle_group += ['ycm']
 endif
 
 
@@ -51,7 +52,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " Diff 增强，支持 histogram / patience 等更科学的 diff 算法
-Plug 'chrisbra/vim-diff-enhanced'
+" Plug 'chrisbra/vim-diff-enhanced'
 
 
 "----------------------------------------------------------------------
@@ -149,10 +150,10 @@ if index(g:bundle_group, 'enhanced') >= 0
 	Plug 'junegunn/fzf'
 
 	" 使用 :FlyGrep 命令进行实时 grep
-	Plug 'wsdjeg/FlyGrep.vim'
+	" Plug 'wsdjeg/FlyGrep.vim'
 
 	" 使用 :CtrlSF 命令进行模仿 sublime 的 grep
-	Plug 'dyng/ctrlsf.vim'
+	" Plug 'dyng/ctrlsf.vim'
 
 	" 配对括号和引号自动补全
 	Plug 'Raimondi/delimitMate',{'for': ['python', 'lua', 'c', 'go']}
@@ -248,22 +249,22 @@ endif
 if index(g:bundle_group, 'filetypes') >= 0
 
 	" lua 语法高亮增强
-	Plug 'tbastos/vim-lua', { 'for': 'lua' }
+	Plug 'tbastos/vim-lua', {'for': 'lua'}
 
 	" C++ 语法高亮增强，支持 11/14/17 标准
-	Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
+	Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 
 	" 额外语法文件
-	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
+	Plug 'justinmk/vim-syntax-extra', {'for': ['c', 'bison', 'flex', 'cpp']}
 
 	" python 语法文件增强
-	Plug 'vim-python/python-syntax', { 'for': ['python'] }
+	Plug 'vim-python/python-syntax', {'for': ['python']}
 
 	" rust 语法增强
-	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+	Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 	" vim org-mode 
-	Plug 'jceb/vim-orgmode', { 'for': 'org' }
+	Plug 'jceb/vim-orgmode', {'for': 'org'}
 endif
 
 
@@ -309,7 +310,7 @@ endif
 " LanguageTool 语法检查
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'grammer') >= 0
-	Plug 'rhysd/vim-grammarous'
+	Plug 'rhysd/vim-grammarous', {'for': ['python', 'lua', 'c', 'go']}
 	noremap <space>rg :GrammarousCheck --lang=en-US --no-move-to-first-error --no-preview<cr>
 	map <space>rr <Plug>(grammarous-open-info-window)
 	map <space>rv <Plug>(grammarous-move-to-info-window)
@@ -326,8 +327,7 @@ endif
 " ale：动态语法检查
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'ale') >= 0
-	Plug 'w0rp/ale',{'for': ['python', 'lua', 'c', 'go']}
-	Plug 'Valloric/YouCompleteMe',{'for': ['python', 'lua', 'c', 'go']}
+	Plug 'w0rp/ale', {'for': ['python', 'lua', 'c', 'go']}
 
 	" 设定延迟和提示信息
 	let g:ale_completion_delay = 500
@@ -394,7 +394,7 @@ endif
 " echodoc：搭配 YCM/deoplete 在底部显示函数参数
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'echodoc') >= 0
-	Plug 'Shougo/echodoc.vim'
+	Plug 'Shougo/echodoc.vim', {'for': ['python', 'lua', 'c', 'go']}
 	set noshowmode
 	let g:echodoc#enable_at_startup = 1
 endif
@@ -471,77 +471,41 @@ if index(g:bundle_group, 'leaderf') >= 0
 				\ }
 
 	else
-		" 不支持 python ，使用 CtrlP 代替
-		Plug 'ctrlpvim/ctrlp.vim'
-
-		" 显示函数列表的扩展插件
-		Plug 'tacahiroy/ctrlp-funky'
-
-		" 忽略默认键位
-		let g:ctrlp_map = ''
-
-		" 模糊匹配忽略
-		let g:ctrlp_custom_ignore = {
-		  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-		  \ 'file': '\v\.(exe|so|dll|mp3|wav|sdf|suo|mht)$',
-		  \ 'link': 'some_bad_symbolic_links',
-		  \ }
-
-		" 项目标志
-		let g:ctrlp_root_markers = ['.project', '.root', '.svn', '.git']
-		let g:ctrlp_working_path = 0
-
-		" CTRL+p 打开文件模糊匹配
-		noremap <c-p> :CtrlP<cr>
-
-		" CTRL+n 打开最近访问过的文件的匹配
-		noremap <c-n> :CtrlPMRUFiles<cr>
-
-		" ALT+p 显示当前文件的函数列表
-		noremap <m-p> :CtrlPFunky<cr>
-
-		" ALT+n 匹配 buffer
-		noremap <m-n> :CtrlPBuffer<cr>
+		echo 'Vim 不支持 Python'
 	endif
 endif
-
-
-"----------------------------------------------------------------------
-" 结束插件安装
-"----------------------------------------------------------------------
-call plug#end()
-
-
 
 "----------------------------------------------------------------------
 " YouCompleteMe 默认设置：YCM 需要你另外手动编译安装
 "----------------------------------------------------------------------
+if index(g:bundle_group, 'ycm') >= 0
+	Plug 'Valloric/YouCompleteMe', {'for': ['python', 'lua', 'c', 'go']}
 
-" 禁用预览功能：扰乱视听
-let g:ycm_add_preview_to_completeopt = 0
+	" 禁用预览功能：扰乱视听
+	let g:ycm_add_preview_to_completeopt = 0
 
-" 禁用诊断功能：我们用前面更好用的 ALE 代替
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
-set completeopt=menu,menuone,noselect
+	" 禁用诊断功能：我们用前面更好用的 ALE 代替
+	let g:ycm_show_diagnostics_ui = 0
+	let g:ycm_server_log_level = 'info'
+	let g:ycm_min_num_identifier_candidate_chars = 2
+	let g:ycm_collect_identifiers_from_comments_and_strings = 1
+	let g:ycm_complete_in_strings=1
+	let g:ycm_key_invoke_completion = '<c-z>'
+	set completeopt=menu,menuone,noselect
 
-" noremap <c-z> <NOP>
+	" noremap <c-z> <NOP>
 
-" 两个字符自动触发语义补全
-let g:ycm_semantic_triggers =  {
+	" 两个字符自动触发语义补全
+	let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
 
 
-"----------------------------------------------------------------------
-" Ycm 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
-"----------------------------------------------------------------------
-let g:ycm_filetype_whitelist = { 
+	"----------------------------------------------------------------------
+	" Ycm 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
+	"----------------------------------------------------------------------
+	let g:ycm_filetype_whitelist = { 
 			\ "c":1,
 			\ "cpp":1, 
 			\ "objc":1,
@@ -596,4 +560,9 @@ let g:ycm_filetype_whitelist = {
 			\ "ps1":1,
 			\ }
 
+endif
 
+"----------------------------------------------------------------------
+" 结束插件安装
+"----------------------------------------------------------------------
+call plug#end()
