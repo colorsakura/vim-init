@@ -43,7 +43,7 @@ call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 "----------------------------------------------------------------------
 
 " 全文快速移动，<leader><leader>f{char} 即可触发
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
 " 文件浏览器，代替 netrw
 Plug 'justinmk/vim-dirvish'
@@ -259,6 +259,8 @@ if index(g:bundle_group, 'filetypes') >= 0
 
 	" python 语法文件增强
 	Plug 'vim-python/python-syntax', {'for': ['python']}
+	" 特征全开
+	let g:python_highlight_all = 1
 
 	" rust 语法增强
 	Plug 'rust-lang/rust.vim', {'for': 'rust'}
@@ -479,7 +481,7 @@ endif
 " YouCompleteMe 默认设置：YCM 需要你另外手动编译安装
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'ycm') >= 0
-	Plug 'Valloric/YouCompleteMe', {'for': ['python', 'lua', 'c', 'go']}
+	Plug 'Valloric/YouCompleteMe', {'for': ['python', 'c', 'go']}
 
 	" 禁用预览功能：扰乱视听
 	let g:ycm_add_preview_to_completeopt = 0
