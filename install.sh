@@ -1,20 +1,19 @@
 #!/bin/bash
 
-mv ~/.vimrc ~/.vimrc.bak
+mv ~/.vimrc ~/.vim/vimrc.bak
 
 touch ~/.vimrc
+mkdir -p ~/.vim
 
-echo "source ~/.vim/init.vim" > ~/.vimrc
+echo "source ${PWD}/init.vim" > ~/.vimrc
+echo "source ${PWD}/init/basic.vim
+source ${PWD}/init/config.vim
+source ${PWD}/init/keymaps.vim
+source ${PWD}/init/plugins.vim
+source ${PWD}/init/style.vim
+source ${PWD}/init/tabsize.vim" > ${PWD}/init.vim
 
-ln -s ${PWD}/init.vim ~/.vim/init.vim
-ln -s ${PWD}/autoload ~/.vim/autoload
-ln -s ${PWD}/colors ~/.vim/colors
-ln -s ${PWD}/init ~/.vim/init
-ln -s ${PWD}/plugin ~/.vim/plugin
-ln -s ${PWD}/syntax ~/.vim/syntax
-ln -s ${PWD}/tools ~/.vim/tools
-
-curl -fLo ${PWD}/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# curl -fLo ${PWD}/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim -c "PlugInstall" -c "q" -c "q"
 

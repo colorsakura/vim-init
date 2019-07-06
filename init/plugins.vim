@@ -17,7 +17,7 @@ if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
 	let g:bundle_group += ['leaderf']
-	let g:bundle_group += ['ycm']
+	" let g:bundle_group += ['ycm']
 endif
 
 
@@ -473,7 +473,7 @@ if index(g:bundle_group, 'leaderf') >= 0
 				\ }
 
 	else
-		echo 'Vim 不支持 Python'
+		" echo 'Vim 不支持 Python'
 	endif
 endif
 
