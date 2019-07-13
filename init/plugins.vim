@@ -42,15 +42,16 @@ call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 "----------------------------------------------------------------------
 
 " 全文快速移动，<leader><leader>f{char} 即可触发
-" Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
+" 主题
 Plug 'joshdick/onedark.vim'
 
 " 文件浏览器，代替 netrw
-Plug 'justinmk/vim-dirvish'
+" Plug 'justinmk/vim-dirvish'
 
 " 表格对齐，使用命令 Tabularize
-Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+" Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " Diff 增强，支持 histogram / patience 等更科学的 diff 算法
 " Plug 'chrisbra/vim-diff-enhanced'
@@ -93,8 +94,6 @@ augroup END
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'basic') >= 0
 
-	" 一次性安装一大堆 colorscheme
-	Plug 'flazz/vim-colorschemes'
 
 	" 支持库，给其他插件用的函数库
 	Plug 'xolox/vim-misc'
