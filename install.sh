@@ -13,7 +13,7 @@ source ${PWD}/init/plugins.vim
 source ${PWD}/init/style.vim
 source ${PWD}/init/tabsize.vim" > ${PWD}/init.vim
 
-# curl -fLo ${PWD}/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ${PWD}/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim -c "PlugInstall" -c "q" -c "q"
 

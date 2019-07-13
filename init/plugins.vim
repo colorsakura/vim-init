@@ -20,6 +20,7 @@ if !exists('g:bundle_group')
 	" let g:bundle_group += ['ycm']
 endif
 
+Plug 'joshdick/onedark.vim'
 
 "----------------------------------------------------------------------
 " 计算当前 vim-init 的子路径
@@ -44,6 +45,8 @@ call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 
 " 全文快速移动，<leader><leader>f{char} 即可触发
 " Plug 'easymotion/vim-easymotion'
+
+Plug '
 
 " 文件浏览器，代替 netrw
 Plug 'justinmk/vim-dirvish'
