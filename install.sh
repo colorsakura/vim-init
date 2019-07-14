@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mv ~/.vimrc ~/.vim/vimrc.bak
+mv -f ~/.vimrc ~/.vim/vimrc.bak
 
 touch ~/.vimrc
 mkdir -p ~/.vim
