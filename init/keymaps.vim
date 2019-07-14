@@ -246,14 +246,13 @@ endif
 "----------------------------------------------------------------------
 function! ExecuteFile()
 	let cmd = ''
-	if index(['c', 'cpp', 'rs', 'go'], &ft) >= 0
-		" native 语言，把当前文件名去掉扩展名后作为可执行运行
+	if index(['c'], &ft) >= 0
 		" 写全路径名是因为后面 -cwd=? 会改变运行时的当前路径，所以写全路径
 		" 加双引号是为了避免路径中包含空格
-		let cmd = '"$(VIM_FILEDIR)/$(VIM_FILENOEXT)"'
+		let cmd = 'gcc $(VIM_FILEPATH) -o $(VIM_FILENOEXT) & ./$(VIM_FILENOEXT)'
 	elseif &ft == 'python'
 		let $PYTHONUNBUFFERED=1 " 关闭 python 缓存，实时看到输出
-		let cmd = 'python "$(VIM_FILEPATH)"'
+		let cmd = 'python3 "$(VIM_FILEPATH)"'
 	elseif &ft == 'javascript'
 		let cmd = 'node "$(VIM_FILEPATH)"'
 	elseif &ft == 'perl'
