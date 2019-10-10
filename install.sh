@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mv -f ~/.vimrc ~/.vim/vimrc.bak
+mv -f ~/.vimrc ~/.vim/vimrc.bak || echo "没有vim配置文件"
 
 touch ~/.vimrc
 mkdir -p ~/.vim
@@ -13,7 +13,7 @@ source ${PWD}/init/plugins.vim
 source ${PWD}/init/style.vim
 source ${PWD}/init/tabsize.vim" > ${PWD}/init.vim
 
-curl -fLo ${PWD}/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim -c "PlugInstall" -c "q" -c "q"
 
